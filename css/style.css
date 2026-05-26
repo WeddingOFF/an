@@ -31,7 +31,7 @@ body {
   z-index: 1;
 }
 
-/* NAVY OVERLAY DENGAN GARIS TEGAS GELOMBANG */
+/* NAVY OVERLAY - OMBAK HALUS */
 .wave-overlay {
   position: absolute;
   top: 0;
@@ -41,32 +41,33 @@ body {
   z-index: 2;
   background: linear-gradient(
     to bottom,
-    transparent 0%,
-    rgba(0, 28, 75, 0.4) 45%,
-    rgba(0, 35, 90, 0.75) 60%,
-    rgba(0, 38, 100, 0.9) 75%,
-    rgba(0, 32, 88, 0.97) 88%,
-    rgba(0, 20, 62, 0.99) 100%
+    transparent 30%,
+    rgba(0, 30, 78, 0.45) 48%,
+    rgba(0, 35, 92, 0.75) 62%,
+    rgba(0, 38, 102, 0.9) 78%,
+    rgba(0, 32, 88, 0.96) 88%,
+    rgba(0, 20, 65, 0.99) 100%
   );
   
-  /* Garis tegas gelombang menurun (tinggi kiri - rendah kanan) */
+  /* Gelombang ombak halus - Tinggi kiri, rendah kanan */
   clip-path: polygon(
     0% 0%,
     100% 0%,
     100% 100%,
     0% 100%,
-    /* Titik-titik gelombang tepian atas */
-    0% 52%,
-    18% 45%,
-    35% 55%,
-    52% 47%,
-    68% 58%,
-    85% 53%,
-    100% 62%
+    /* Titik ombak halus */
+    0% 48%,
+    12% 42%,
+    28% 50%,
+    45% 43%,
+    62% 52%,
+    78% 47%,
+    92% 58%,
+    100% 55%
   );
 }
 
-/* Lapisan kedua untuk memperkuat gradasi di dalam gelombang */
+/* Lapisan ombak kedua untuk efek lebih halus dan dalam */
 .wave-overlay::before {
   content: '';
   position: absolute;
@@ -76,25 +77,26 @@ body {
   height: 100%;
   background: linear-gradient(
     to bottom,
-    transparent 40%,
-    rgba(0, 40, 105, 0.6) 58%,
-    rgba(0, 45, 118, 0.85) 78%,
-    rgba(0, 30, 85, 0.95) 100%
+    transparent 38%,
+    rgba(0, 38, 98, 0.55) 55%,
+    rgba(0, 42, 110, 0.82) 72%,
+    rgba(0, 35, 95, 0.95) 100%
   );
   clip-path: polygon(
     0% 0%,
     100% 0%,
     100% 100%,
     0% 100%,
-    0% 55%,
-    20% 48%,
-    38% 57%,
-    55% 50%,
-    72% 61%,
-    88% 56%,
-    100% 65%
+    0% 52%,
+    15% 46%,
+    32% 53%,
+    48% 46%,
+    65% 55%,
+    80% 50%,
+    95% 60%,
+    100% 58%
   );
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
 .content {
@@ -145,13 +147,14 @@ body {
       100% 0%,
       100% 100%,
       0% 100%,
-      0% 55%,
-      20% 47%,
-      38% 58%,
-      55% 50%,
-      75% 62%,
-      88% 57%,
-      100% 66%
+      0% 50%,
+      15% 44%,
+      30% 52%,
+      48% 45%,
+      65% 54%,
+      80% 49%,
+      95% 60%,
+      100% 57%
     );
   }
 }
