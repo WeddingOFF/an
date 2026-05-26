@@ -1,94 +1,49 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wedding Invitation – Asep & Ai Siti</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Asep & Ai Siti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ===== COVER ===== -->
-  <section id="cover">
+    <div class="invitation-container">
+        <div class="navy-overlay"></div>
 
-    <!-- Background foto prewed -->
-    <div class="cover-bg"></div>
-    <div class="cover-overlay"></div>
-
-    <!-- Wave navy elegan dari bawah -->
-    <div class="cover-wave">
-      <svg viewBox="0 0 390 560" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <!-- Gradient dari navy solid (bawah) ke transparan (atas) -->
-          <linearGradient id="navyFade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#0b1c3a" stop-opacity="0"/>
-            <stop offset="28%"  stop-color="#0b1c3a" stop-opacity="0.55"/>
-            <stop offset="58%"  stop-color="#0b1c3a" stop-opacity="0.88"/>
-            <stop offset="100%" stop-color="#0b1c3a" stop-opacity="1"/>
-          </linearGradient>
-        </defs>
-        <!--
-          Path: mulai dari sudut kiri atas container wave,
-          lekukan gelombang lembut di sekitar 30–35% dari atas,
-          lalu turun solid sampai bawah.
-          Titik gelombang disesuaikan agar "puncak" wave ada di
-          area sekitar bahu/dada foto, tidak menutupi wajah.
-        -->
-        <path d="
-          M0,80
-          C60,40 130,10 200,30
-          C270,50 320,75 390,45
-          L390,560
-          L0,560
-          Z
-        " fill="url(#navyFade)"/>
-      </svg>
-    </div>
-
-    <!-- Label kiri atas -->
-    <div class="cover-top-label">
-      <span class="welcome-text">Welcome to</span>
-      <span class="wedding-of">The Wedding of</span>
-    </div>
-
-    <!-- Konten bawah -->
-    <div class="cover-bottom">
-
-      <!-- Nama pasangan -->
-      <div class="couple-names">
-        <div class="name-block">
-          <span class="name-full">Asep Ilyas</span>
-          <span class="name-nick">— Adul —</span>
+        <div class="top-content">
+            <p class="welcome-text">Welcome to</p>
+            <h1 class="wedding-title">The Wedding of</h1>
         </div>
 
-        <div class="names-divider">&amp;</div>
+        <div class="bottom-content">
+            
+            <div class="couple-info">
+                <div class="groom-bride">
+                    <div class="name-wrapper">
+                        <h2 class="main-name">Asep Ilyas</h2>
+                        <span class="nick-name">(M Adul)</span>
+                    </div>
+                    <span class="and-symbol">&</span>
+                    <div class="name-wrapper">
+                        <h2 class="main-name">Ai Siti</h2>
+                        <span class="nick-name">(Cui)</span>
+                    </div>
+                </div>
+                <p class="wedding-date">07 Juni 2026</p>
+            </div>
 
-        <div class="name-block">
-          <span class="name-full">Ai Siti</span>
-          <span class="name-nick">— Cui —</span>
+            <div class="guest-container">
+                <p class="yth-text">Kpd Yth. Bapak/Ibu/Saudara/i:</p>
+                <h3 class="guest-name">Nama Tamu Undangan</h3>
+                <button class="btn-open">Buka Undangan</button>
+            </div>
+
         </div>
-      </div>
-
-      <!-- Tanggal -->
-      <div class="cover-date">
-        <div class="date-line"></div>
-        <span class="date-text">07 Juni 2026</span>
-        <div class="date-line right"></div>
-      </div>
-
-      <!-- Kepada tamu -->
-      <p class="cover-kepada">Kepada Yth.</p>
-      <p class="cover-tamu" id="guest-name">Tamu Undangan</p>
-
-      <!-- Tombol -->
-      <button class="btn-open" id="btn-open">
-        <span>Buka Undangan</span>
-        <span class="btn-icon">→</span>
-      </button>
-
     </div>
-  </section>
 
-  <script src="js/main.js"></script>
 </body>
 </html>
