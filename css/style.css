@@ -11,6 +11,8 @@
   --gold: #c9a96e;
   --gold-light: #e8d5b0;
   --dark: #1a1410;
+  --navy: #0b1c3a;
+  --navy-mid: #0d2247;
   --white: #ffffff;
   --text-shadow: 0 2px 20px rgba(0,0,0,0.4);
 }
@@ -36,24 +38,43 @@ html, body {
 .cover-bg {
   position: absolute;
   inset: 0;
-  background-image: url('../img/background2.jpeg');
+  background-image: url('../img/prewed.jpg');
   background-size: cover;
   background-position: center top;
   z-index: 0;
 }
 
-/* Overlay gradient – gelap di bawah, transparan di tengah-atas */
+/* Overlay tipis atas agar foto tidak terlalu terang */
 .cover-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(15, 10, 5, 0.18) 0%,
-    rgba(15, 10, 5, 0.05) 30%,
-    rgba(15, 10, 5, 0.10) 55%,
-    rgba(15, 10, 5, 0.72) 100%
+    rgba(11, 28, 58, 0.18) 0%,
+    rgba(11, 28, 58, 0.04) 30%,
+    rgba(11, 28, 58, 0.0)  55%,
+    rgba(11, 28, 58, 0.0)  65%
   );
   z-index: 1;
+}
+
+/* ===== WAVE NAVY – gelombang elegan dari bawah ===== */
+.cover-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cover-wave svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* ===== TOP LEFT LABEL ===== */
@@ -249,40 +270,19 @@ html, body {
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 400px) {
-  .cover-top-label {
-    top: 28px;
-    left: 24px;
-  }
-  .cover-top-label .wedding-of {
-    font-size: 2.1rem;
-  }
-  .cover-bottom {
-    padding: 0 24px 36px 24px;
-  }
-  .name-full {
-    font-size: 1.8rem;
-  }
+  .cover-top-label { top: 28px; left: 24px; }
+  .cover-top-label .wedding-of { font-size: 2.1rem; }
+  .cover-bottom { padding: 0 24px 36px 24px; }
+  .name-full { font-size: 1.8rem; }
 }
