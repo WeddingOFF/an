@@ -1,288 +1,186 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400&display=swap');
-
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Reset Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-:root {
-  --cream: #f5ede0;
-  --gold: #c9a96e;
-  --gold-light: #e8d5b0;
-  --dark: #1a1410;
-  --navy: #0b1c3a;
-  --navy-mid: #0d2247;
-  --white: #ffffff;
-  --text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+body, html {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0b192c;
+    overflow: hidden;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+/* Container Utama dengan Background Foto */
+.invitation-container {
+    position: relative;
+    width: 100%;
+    max-width: 450px; /* Standar ukuran layar HP/Mobile agar rapi */
+    height: 100vh;
+    margin: 0 auto;
+    background-image: url('background7.jpeg'); /* Pastikan nama file foto sesuai */
+    background-size: cover;
+    background-position: center top;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 30px 40px 30px;
+    z-index: 1;
 }
 
-/* ===== COVER SECTION ===== */
-#cover {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+/* Overlay Gradasi Navy Blue */
+/* Mengatur gradasi mulai transparan di area dada pria (sekitar 35% ke bawah) 
+   lalu semakin pekat ke arah bawah/tangan wanita */
+.navy-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom, 
+        rgba(11, 25, 44, 0) 0%, 
+        rgba(11, 25, 44, 0.2) 35%, 
+        rgba(11, 25, 44, 0.85) 60%, 
+        rgba(11, 25, 44, 1) 100%
+    );
+    z-index: 2;
+    pointer-events: none; /* Supaya tidak menghalangi klik tombol */
 }
 
-/* Background image */
-.cover-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('../img/background2.jpeg');
-  background-size: cover;
-  background-position: center top;
-  z-index: 0;
+/* Memastikan konten teks berada di atas overlay */
+.top-content, .bottom-content {
+    position: relative;
+    z-index: 3;
 }
 
-/* Overlay tipis atas agar foto tidak terlalu terang */
-.cover-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(11, 28, 58, 0.18) 0%,
-    rgba(11, 28, 58, 0.04) 30%,
-    rgba(11, 28, 58, 0.0)  55%,
-    rgba(11, 28, 58, 0.0)  65%
-  );
-  z-index: 1;
+/* Styling Bagian Atas */
+.top-content {
+    text-align: center;
+    color: #4a3f35; /* Warna pastel gelap/earthy senada baju agar kontras di background atas */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
 }
 
-/* ===== WAVE NAVY – gelombang elegan dari bawah ===== */
-.cover-wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 70%;
-  z-index: 2;
-  pointer-events: none;
+.welcome-text {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 400;
+    margin-bottom: 5px;
 }
 
-.cover-wave svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.wedding-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    font-weight: 500;
 }
 
-/* ===== TOP LEFT LABEL ===== */
-.cover-top-label {
-  position: absolute;
-  top: 36px;
-  left: 36px;
-  z-index: 10;
-  text-align: left;
-  animation: fadeSlideDown 1.2s ease both;
-  animation-delay: 0.2s;
+/* Styling Bagian Bawah */
+.bottom-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-.cover-top-label .welcome-text {
-  font-family: 'Jost', sans-serif;
-  font-weight: 200;
-  font-size: 0.68rem;
-  letter-spacing: 0.35em;
-  color: rgba(255,255,255,0.75);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 2px;
+/* Informasi Pasangan ditaruh di Kiri Bawah (area Pria) */
+.couple-info {
+    text-align: left;
+    color: #ffffff;
+    padding-left: 5px;
 }
 
-.cover-top-label .wedding-of {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.6rem;
-  color: var(--gold-light);
-  line-height: 1;
-  text-shadow: 0 2px 18px rgba(0,0,0,0.35);
-  display: block;
+.groom-bride {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-/* ===== BOTTOM CONTENT ===== */
-.cover-bottom {
-  position: relative;
-  z-index: 10;
-  padding: 0 36px 44px 36px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  animation: fadeSlideUp 1.4s ease both;
-  animation-delay: 0.4s;
+.name-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-/* Nama pasangan */
-.couple-names {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  margin-bottom: 6px;
+.main-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.2;
 }
 
-.name-block {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.05;
+.nick-name {
+    font-size: 0.85rem;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-top: 2px;
 }
 
-.name-full {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-  font-size: 2.1rem;
-  color: var(--white);
-  text-shadow: var(--text-shadow);
-  letter-spacing: 0.02em;
+.and-symbol {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    margin: 2px 0 2px 15px;
+    color: #e2bfb3; /* Warna aksen gold/rose lembut */
 }
 
-.name-nick {
-  font-family: 'Jost', sans-serif;
-  font-weight: 200;
-  font-size: 0.7rem;
-  letter-spacing: 0.28em;
-  color: var(--gold-light);
-  text-transform: uppercase;
-  margin-top: 1px;
+.wedding-date {
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    font-weight: 400;
+    color: #e2bfb3;
 }
 
-.names-divider {
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.8rem;
-  color: var(--gold);
-  line-height: 1.1;
-  margin: 2px 0;
-  text-shadow: 0 1px 10px rgba(0,0,0,0.3);
+/* Kotak Informasi Tamu & Tombol */
+.guest-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    color: #ffffff;
 }
 
-/* Tanggal */
-.cover-date {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0 18px 0;
+.yth-text {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-bottom: 8px;
 }
 
-.date-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold));
-  max-width: 40px;
+.guest-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
-.date-line.right {
-  background: linear-gradient(to left, transparent, var(--gold));
-}
-
-.date-text {
-  font-family: 'Jost', sans-serif;
-  font-weight: 300;
-  font-size: 0.72rem;
-  letter-spacing: 0.32em;
-  color: var(--gold-light);
-  text-transform: uppercase;
-}
-
-/* Kepada */
-.cover-kepada {
-  font-family: 'Jost', sans-serif;
-  font-weight: 200;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.6);
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.cover-tamu {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--cream);
-  text-shadow: var(--text-shadow);
-  margin-bottom: 22px;
-  min-height: 1.4em;
-}
-
-/* Tombol buka undangan */
+/* Tombol Buka Undangan */
 .btn-open {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold-light);
-  font-family: 'Jost', sans-serif;
-  font-weight: 300;
-  font-size: 0.72rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  padding: 14px 28px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.4s ease;
-  width: fit-content;
-}
-
-.btn-open::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-  z-index: 0;
-}
-
-.btn-open:hover::before {
-  transform: scaleX(1);
+    background-color: #e2bfb3; /* Warna pastel elegan melengkapi Navy */
+    color: #0b192c;
+    border: none;
+    padding: 12px 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn-open:hover {
-  color: var(--dark);
-}
-
-.btn-open span {
-  position: relative;
-  z-index: 1;
-}
-
-.btn-open .btn-icon {
-  position: relative;
-  z-index: 1;
-  font-size: 0.85rem;
-  transition: transform 0.3s ease;
-}
-
-.btn-open:hover .btn-icon {
-  transform: translateX(4px);
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeSlideDown {
-  from { opacity: 0; transform: translateY(-18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 400px) {
-  .cover-top-label { top: 28px; left: 24px; }
-  .cover-top-label .wedding-of { font-size: 2.1rem; }
-  .cover-bottom { padding: 0 24px 36px 24px; }
-  .name-full { font-size: 1.8rem; }
+    background-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
 }
