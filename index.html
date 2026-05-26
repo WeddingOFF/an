@@ -15,6 +15,36 @@
     <div class="cover-bg"></div>
     <div class="cover-overlay"></div>
 
+    <!-- Wave navy elegan dari bawah -->
+    <div class="cover-wave">
+      <svg viewBox="0 0 390 560" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Gradient dari navy solid (bawah) ke transparan (atas) -->
+          <linearGradient id="navyFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#0b1c3a" stop-opacity="0"/>
+            <stop offset="28%"  stop-color="#0b1c3a" stop-opacity="0.55"/>
+            <stop offset="58%"  stop-color="#0b1c3a" stop-opacity="0.88"/>
+            <stop offset="100%" stop-color="#0b1c3a" stop-opacity="1"/>
+          </linearGradient>
+        </defs>
+        <!--
+          Path: mulai dari sudut kiri atas container wave,
+          lekukan gelombang lembut di sekitar 30–35% dari atas,
+          lalu turun solid sampai bawah.
+          Titik gelombang disesuaikan agar "puncak" wave ada di
+          area sekitar bahu/dada foto, tidak menutupi wajah.
+        -->
+        <path d="
+          M0,80
+          C60,40 130,10 200,30
+          C270,50 320,75 390,45
+          L390,560
+          L0,560
+          Z
+        " fill="url(#navyFade)"/>
+      </svg>
+    </div>
+
     <!-- Label kiri atas -->
     <div class="cover-top-label">
       <span class="welcome-text">Welcome to</span>
