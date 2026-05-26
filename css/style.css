@@ -7,184 +7,44 @@
 
 body, html {
     height: 100%;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #0b192c; /* Warna dasar navy agar menyatu dengan blok teks miring */
-    overflow: hidden;
+    background-color: #1a1a1a; /* Warna gelap untuk sisa layar monitor */
+    display: flex;
+    justify-content: center; /* Bikin kerangka ada di tengah kalau dibuka di PC */
 }
 
-/* Container Utama */
-.invitation-container {
-    position: relative;
+/* 1. Kerangka Utama (Foto Background) */
+.container-utama {
     width: 100%;
-    max-width: 450px; 
+    max-width: 450px; /* Ukuran standar layar HP */
     height: 100vh;
-    margin: 0 auto;
     
-    /* Pastikan path gambar mengarah ke folder img dengan benar */
-    background-image: url('../img/background7.jpeg'); 
+    /* URL Foto kamu */
+    background-image: url('../img/background.jpg'); 
     background-size: cover;
     background-position: center top; 
     
+    /* Flexbox untuk misahin area atas dan bawah */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Mengubah penjajaran ke atas agar judul di atas bersih */
-    padding: 60px 0px 0px 0px; /* Menghapus padding samping dan bawah */
-}
-
-/* Bagian Atas: Welcome & The Wedding of (Tetap bersih di atas foto) */
-.top-content {
-    text-align: center;
-    color: #4a3f35; /* Warna font gelap pastel agar kontras dengan foto background atas */
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6); /* Sedikit bayangan agar terbaca jelas */
-    padding: 0 30px; /* Padding samping hanya untuk judul */
+    justify-content: space-between; /* Dorong elemen ke ujung atas dan ujung bawah */
+    
     position: relative;
-    z-index: 1; /* Di atas foto, tapi di bawah blok navy */
 }
 
-.welcome-text {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-
-.wedding-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.8rem;
-    font-weight: 500;
-}
-
-/* REVISI TOTAL: Bagian Bawah Menjadi Blok Navy Miring */
-.bottom-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%; /* Full width agar bisa dipotong miring */
-    height: 65%; /* Menempati 65% area bawah layar */
-    background-color: #0b192c; /* Blok warna Navy solid */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Penjajaran isi ke bawah */
-    padding: 10px 30px 40px 30px; /* Padding internal agar teks tidak terlalu ke tepi */
-    z-index: 2; /* Di atas judul dan foto */
-
-    /* KONSEP UTAMA: Membuat tepi atas diagonal (tebing/miring) 
-       Tepi atas dimulai tinggi di kiri, dan menurun ke kanan.
-       Batas atas diagonal ini selaras dari atas nama hingga tangan kanan wanita.
-    */
-    clip-path: polygon(0 15%, 80% 50%, 100% 100%, 0% 100%); /* Penyesuaian persentase agar pas */
-    /* point 1 (kiri-atas): 0% x, 15% y (mulai di atas nama) */
-    /* point 2 (kanan-atas diagonal): 80% x, 50% y (selaras tangan wanita) */
-    /* point 3 (kanan-bawah): 100% x, 100% y */
-    /* point 4 (kiri-bawah): 0% x, 100% y */
-}
-
-/* Menjangkar elemen ke bagian bawah blok navy */
-.bottom-content > * {
-    margin-top: auto;
-}
-
-/* Informasi Pasangan: Teks Rapat Kiri */
-.couple-info {
-    text-align: left;
-    color: #ffffff;
-    padding-left: 0; /* Hapus padding tambahan */
-    margin-top: 15px; /* Spasi dari tepi atas diagonal */
-}
-
-.groom-bride {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.name-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.main-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    line-height: 1.2;
-}
-
-.nick-name {
-    font-size: 0.85rem;
-    font-weight: 300;
-    opacity: 0.85;
-    margin-top: 0;
-}
-
-.and-symbol {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.6rem;
-    margin: 0 0 0 10px;
-    color: #e2bfb3; /* Aksen krem/dusty rose */
-}
-
-.wedding-date {
-    font-size: 0.95rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 8px;
-    font-weight: 400;
-    color: #e2bfb3;
-}
-
-/* Kotak Informasi Tamu: Di dalam Blok Navy */
-.guest-container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.08); /* Efek kaca transparan lembut */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 20px;
-    border-radius: 15px;
-    color: #ffffff;
-    margin-top: 25px; /* Spasi dari tanggal */
-}
-
-.yth-text {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
-    margin-bottom: 8px;
-}
-
-.guest-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-bottom: 15px;
-    color: #ffffff;
-}
-
-/* Tombol Buka Undangan */
-.btn-open {
-    background-color: #e2bfb3; 
-    color: #0b192c;
-    border: none;
-    padding: 12px 30px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+/* 2. Area Atas */
+.area-atas {
     width: 100%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    height: 30%; /* Makan tempat 30% dari atas */
+    
+    /* Garis merah cuma buat penanda kerangka */
+    border: 3px dashed red; 
 }
 
-.btn-open:hover {
-    background-color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+/* 3. Area Bawah */
+.area-bawah {
+    width: 100%;
+    height: 50%; /* Makan tempat 50% dari bawah */
+    
+    /* Garis biru cuma buat penanda kerangka */
+    border: 3px dashed blue; 
 }
