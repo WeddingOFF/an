@@ -38,7 +38,7 @@ html, body {
 .cover-bg {
   position: absolute;
   inset: 0;
-  background-image: url('../img/prewed.jpg');
+  background-image: url('../img/background2.jpeg');
   background-size: cover;
   background-position: center top;
   z-index: 0;
