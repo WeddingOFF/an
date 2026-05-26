@@ -8,7 +8,7 @@
 body, html {
     height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background-color: #0b192c; /* Warna dasar navy agar menyatu dengan bagian bawah */
+    background-color: #0b192c; /* Warna dasar navy agar menyatu dengan blok teks miring */
     overflow: hidden;
 }
 
@@ -27,42 +27,18 @@ body, html {
     
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 60px 30px 40px 30px;
+    justify-content: flex-start; /* Mengubah penjajaran ke atas agar judul di atas bersih */
+    padding: 60px 0px 0px 0px; /* Menghapus padding samping dan bawah */
 }
 
-/* REVISI OVERLAY GRADASI NAVY:
-   Overlay sekarang hanya menempati 65% area bawah layar.
-   Bagian atas (muka/badan atas) 100% bersih tanpa tertutup warna.
-*/
-.navy-overlay {
-    position: absolute;
-    bottom: 0; /* Dimulai dari paling bawah layar */
-    left: 0;
-    width: 100%;
-    height: 65%; /* Mengamankan 35% area atas layar murni untuk foto */
-    background: linear-gradient(
-        to bottom, 
-        rgba(11, 25, 44, 0) 0%,       /* Transparan di area dada pria / atas nama */
-        rgba(11, 25, 44, 0.7) 45%,    /* Mulai gelap perlahan menyelimuti teks nama */
-        rgba(11, 25, 44, 0.95) 75%,   /* Semakin pekat di area tangan wanita */
-        rgba(11, 25, 44, 1) 100%      /* Solid Navy Blue di bagian kotak tamu & tombol */
-    );
-    z-index: 1;
-    pointer-events: none; /* Agar tidak menghalangi klik */
-}
-
-/* Memastikan konten teks berada di atas overlay (z-index lebih tinggi) */
-.top-content, .bottom-content {
-    position: relative;
-    z-index: 2;
-}
-
-/* Styling Bagian Atas (Welcome & The Wedding of) */
+/* Bagian Atas: Welcome & The Wedding of (Tetap bersih di atas foto) */
 .top-content {
     text-align: center;
     color: #4a3f35; /* Warna font gelap pastel agar kontras dengan foto background atas */
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6); /* Sedikit bayangan agar terbaca jelas */
+    padding: 0 30px; /* Padding samping hanya untuk judul */
+    position: relative;
+    z-index: 1; /* Di atas foto, tapi di bawah blok navy */
 }
 
 .welcome-text {
@@ -79,24 +55,48 @@ body, html {
     font-weight: 500;
 }
 
-/* Styling Bagian Bawah */
+/* REVISI TOTAL: Bagian Bawah Menjadi Blok Navy Miring */
 .bottom-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Full width agar bisa dipotong miring */
+    height: 65%; /* Menempati 65% area bawah layar */
+    background-color: #0b192c; /* Blok warna Navy solid */
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    justify-content: space-between; /* Penjajaran isi ke bawah */
+    padding: 10px 30px 40px 30px; /* Padding internal agar teks tidak terlalu ke tepi */
+    z-index: 2; /* Di atas judul dan foto */
+
+    /* KONSEP UTAMA: Membuat tepi atas diagonal (tebing/miring) 
+       Tepi atas dimulai tinggi di kiri, dan menurun ke kanan.
+       Batas atas diagonal ini selaras dari atas nama hingga tangan kanan wanita.
+    */
+    clip-path: polygon(0 15%, 80% 50%, 100% 100%, 0% 100%); /* Penyesuaian persentase agar pas */
+    /* point 1 (kiri-atas): 0% x, 15% y (mulai di atas nama) */
+    /* point 2 (kanan-atas diagonal): 80% x, 50% y (selaras tangan wanita) */
+    /* point 3 (kanan-bawah): 100% x, 100% y */
+    /* point 4 (kiri-bawah): 0% x, 100% y */
 }
 
-/* Informasi Pasangan ditaruh di Kiri Bawah (Area Pria) */
+/* Menjangkar elemen ke bagian bawah blok navy */
+.bottom-content > * {
+    margin-top: auto;
+}
+
+/* Informasi Pasangan: Teks Rapat Kiri */
 .couple-info {
     text-align: left;
     color: #ffffff;
-    padding-left: 5px;
+    padding-left: 0; /* Hapus padding tambahan */
+    margin-top: 15px; /* Spasi dari tepi atas diagonal */
 }
 
 .groom-bride {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 2px;
 }
 
 .name-wrapper {
@@ -117,13 +117,13 @@ body, html {
     font-size: 0.85rem;
     font-weight: 300;
     opacity: 0.85;
-    margin-top: 2px;
+    margin-top: 0;
 }
 
 .and-symbol {
     font-family: 'Great Vibes', cursive;
-    font-size: 1.8rem;
-    margin: 2px 0 2px 15px;
+    font-size: 1.6rem;
+    margin: 0 0 0 10px;
     color: #e2bfb3; /* Aksen krem/dusty rose */
 }
 
@@ -131,21 +131,22 @@ body, html {
     font-size: 0.95rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-top: 15px;
+    margin-top: 8px;
     font-weight: 400;
     color: #e2bfb3;
 }
 
-/* Kotak Informasi Tamu & Tombol */
+/* Kotak Informasi Tamu: Di dalam Blok Navy */
 .guest-container {
     text-align: center;
-    background: rgba(255, 255, 255, 0.08); /* Efek kaca transparan */
+    background: rgba(255, 255, 255, 0.08); /* Efek kaca transparan lembut */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 20px;
     border-radius: 15px;
     color: #ffffff;
+    margin-top: 25px; /* Spasi dari tanggal */
 }
 
 .yth-text {
@@ -160,7 +161,7 @@ body, html {
     font-family: 'Playfair Display', serif;
     font-size: 1.25rem;
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #ffffff;
 }
 
