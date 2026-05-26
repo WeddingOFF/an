@@ -19,7 +19,7 @@ body, html {
     max-width: 450px; /* Standar ukuran layar HP/Mobile agar rapi */
     height: 100vh;
     margin: 0 auto;
-    background-image: url('background7.jpeg'); /* Pastikan nama file foto sesuai */
+   background-image: url('../img/background.jpeg'); /* Pastikan nama file foto sesuai */
     background-size: cover;
     background-position: center top;
     display: flex;
